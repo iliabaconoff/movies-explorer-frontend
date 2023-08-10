@@ -1,0 +1,32 @@
+.main {
+  flex: auto;
+  height: 100%;
+}
+
+.main__wrapper {
+  padding: 70px 10px;
+}
+
+.main_movies {
+  padding: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .main__wrapper {
+    padding: 90px 30px;
+  }
+
+  .main_movies {
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main__wrapper {
+    padding: 110px 70px;
+  }
+
+  .main_movies {
+    padding: 0 70px;
+  }
+}
