@@ -30,6 +30,7 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
           minLength={2}
           maxLength={30}
           placeholder='Виталий'
+          type='text'
         />
       )}
       <ErrorLabel
@@ -39,6 +40,7 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
         values={values}
         errors={errors}
         placeholder='pochta@yandex.ru|'
+        type='email'
       />
       <ErrorLabel
         title='Пароль'
@@ -48,6 +50,7 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
         errors={errors}
         minLength={6}
         placeholder='••••••••••••••'
+        type='password'
       />
       <p className={`form__response-error ${!isRegForm && 'form__response-error_type_login'}`}>
         {/* {serverResError && 'Пример текста ошибки с сервера.'} */}

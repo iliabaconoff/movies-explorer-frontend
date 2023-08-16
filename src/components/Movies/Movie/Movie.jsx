@@ -6,22 +6,22 @@ const Movies = ({ saved, movie, onCardClick, onCardLike, onCardDelete }) => {
   function handleClick() {}
 
   return (
-    <li className='movie__item' tabIndex={0}>
-      <div className='movie__info'>
-        <div className='movie__heading'>
-          <h1 className='movie__title'>{movie.nameRU}</h1>
+    <li className='movies__item' tabIndex={0}>
+      <div className='movies__info'>
+        <div className='movies__heading'>
+          <h2 className='movies__title'>{movie.nameRU}</h2>
 
           {pathname === '/movies' ? (
             <button
               type='button'
               className={
                 saved
-                  ? 'movie__favorite-button movie__favorite-button_active'
-                  : 'movie__favorite-button'
+                  ? 'movies__favorite-button movies__favorite-button_active'
+                  : 'movies__favorite-button'
               }
             />
           ) : (
-            <button type='button' className='movie__delete-button' />
+            <button type='button' className='movies__delete-button' />
           )}
         </div>
 

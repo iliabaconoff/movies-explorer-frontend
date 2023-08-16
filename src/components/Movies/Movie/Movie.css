@@ -1,4 +1,4 @@
-.movie__item {
+.movies__item {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -6,21 +6,21 @@
   width: 100%;
 }
 
-.movie__info {
+.movies__info {
   display: flex;
   flex-direction: column;
   order: 1;
   padding-bottom: 10px;
 }
 
-.movie__heading {
+.movies__heading {
   display: flex;
   justify-content: space-between;
   padding: 10px 0 25px;
   position: relative;
 }
 
-.movie__heading::before {
+.movies__heading::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -30,14 +30,14 @@
   left: 0;
 }
 
-.movie__title {
+.movies__title {
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   margin: 5px 0 0;
 }
 
-.movie__image {
+.movies__image {
   display: block;
   width: 100%;
   aspect-ratio: 1.786;
@@ -51,7 +51,7 @@
   margin: 6px 0 0;
 }
 
-.movie__favorite-button {
+.movies__favorite-button {
   background-image: url('../../../images/saved-inactive.svg');
   background-repeat: no-repeat;
   background-position: center 65%;
@@ -64,11 +64,11 @@
   cursor: pointer;
 }
 
-.movie__delete-button {
+.movies__delete-button {
   background-image: url('../../../images/delete-button.svg');
-  background-size: 9px;
+  background-size: 13px;
   background-repeat: no-repeat;
-  background-position: 55% 55%;
+  background-position: 50% 50%;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -77,36 +77,36 @@
   cursor: pointer;
 }
 
-.movie__favorite-button_active {
+.movies__favorite-button_active {
   background-image: url('../../../images/saved-active.svg');
 }
 
 @media (min-width: 768px) {
-  .movie__item {
+  .movies__item {
     width: 339px;
     height: 279px;
   }
 
-  .movie__title {
+  .movies__title {
     font-size: 13px;
     line-height: 16px;
     margin-top: 4px;
   }
 
-  .movie__duration {
+  .movies__duration {
     font-size: 11px;
     line-height: 13px;
   }
 
-  .movie__delete-button:hover,
-  .movie__favorite-button_active:hover,
-  .movie__favorite-button:hover {
+  .movies__delete-button:hover,
+  .movies__favorite-button_active:hover,
+  .movies__favorite-button:hover {
     opacity: 0.8;
   }
 }
 
 @media (min-width: 1280px) {
-  .movie__item {
+  .movies__item {
     width: 270px;
     height: 240px;
   }

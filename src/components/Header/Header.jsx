@@ -32,32 +32,47 @@ const Header = ({ loggedIn }) => {
   function handleCloseClick() {
     setMenuActive(false);
   }
+  console.log(loggedIn);
 
   return (
     <header className={classNameHeader()}>
       <Link className='header__logo' to='/' />
       {!loggedIn ? (
         <Navigation>
-          <Link className='header__link' to='/signup'>
-            Регистрация
-          </Link>
-          <Link className='header__button' to='/signin'>
-            Войти
-          </Link>
+          <ul className='header__list header__list_noauth'>
+            <li className='header__item'>
+              <Link className='header__link' to='/signup'>
+                Регистрация
+              </Link>
+            </li>
+            <li className='header__item'>
+              <Link className='header__button' to='/signin'>
+                Войти
+              </Link>
+            </li>
+          </ul>
         </Navigation>
       ) : (
         <>
           <div className='header__wrapper'>
             <Navigation>
-              <NavLink className='header__link' to='/'>
-                Главная
-              </NavLink>
-              <NavLink className='header__link' to='/movies'>
-                Фильмы
-              </NavLink>
-              <NavLink className='header__link' to='/saved-movies'>
-                Сохранённые фильмы
-              </NavLink>
+              <ul className='header__list header__list_auth'>
+                <li className='header__item'>
+                  <NavLink className='header__link' to='/'>
+                    Главная
+                  </NavLink>
+                </li>
+                <li className='header__item'>
+                  <NavLink className='header__link' to='/movies'>
+                    Фильмы
+                  </NavLink>
+                </li>
+                <li className='header__item'>
+                  <NavLink className='header__link' to='/saved-movies'>
+                    Сохранённые фильмы
+                  </NavLink>
+                </li>
+              </ul>
             </Navigation>
             <Navigation>
               <NavLink

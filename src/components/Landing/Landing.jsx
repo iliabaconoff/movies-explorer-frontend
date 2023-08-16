@@ -7,7 +7,7 @@ import Portfolio from './Portfolio/Portfolio';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-const Landing = (loggedIn) => {
+const Landing = ({ loggedIn }) => {
   return (
     <>
       <Header loggedIn={loggedIn} />

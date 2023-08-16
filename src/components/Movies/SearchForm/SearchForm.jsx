@@ -15,28 +15,27 @@ const SearchForm = () => {
   }
 
   return (
-    <Form
-      name={'search'}
-      onSubmit={handleSubmit}
-    >
-      <Input
-        value={valueSerch.name}
-        handleChange={handleChange}
-        type={'search'}
-        placeholder={'Фильм'}
-        required={true}
-        name={'search'}
-        form={'search'}
-      />
-      <Input
-        value={valueSerch.name}
-        handleChange={handleChange}
-        type={'checkbox'}
-        label={'Короткометражки'}
-        name={'short'}
-        form={'search'}
-      />
-    </Form>
+    <section>
+      <Form name={'search'} onSubmit={handleSubmit}>
+        <Input
+          value={valueSerch.name}
+          handleChange={handleChange}
+          type={'search'}
+          placeholder={'Фильм'}
+          required
+          name={'search'}
+          form={'search'}
+        />
+        <Input
+          value={valueSerch.name}
+          handleChange={handleChange}
+          type={'checkbox'}
+          label={'Короткометражки'}
+          name={'short'}
+          form={'search'}
+        />
+      </Form>
+    </section>
   );
 };
 

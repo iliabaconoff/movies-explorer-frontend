@@ -29,7 +29,7 @@ const Portfolio = () => {
           <li className='portfolio__item'>
             <Link
               className='portfolio__link'
-              to='https://baconoff.nomoredomains.work'
+              to='https://github.com/iliabaconoff/react-mesto-api-full-gha'
               target='_blank'
             >
               Одностраничное приложение

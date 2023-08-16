@@ -5,7 +5,7 @@ import Landing from '../Landing/Landing';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import SavedMovies from '../Movies/SavedMovies/SavedMovies';
-import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
+// import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
 import NotFound from '../NotFound/NotFound';
 import Register from '../Registration/Registration';
 import Login from '../Login/Login';
@@ -20,22 +20,28 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Landing />} loggedIn={loggedIn} />
+        <Route path='/' element={<Landing loggedIn={loggedIn} />} />
         <Route
           path='/movies'
           element={
-            <ProtectedRouteElement
-              element={Movies}
-              loggedIn={loggedIn}
-              isLoading={isLoading}
-            />
+            // <ProtectedRouteElement
+            //   element={Movies}
+            //   loggedIn={loggedIn}
+            //   isLoading={isLoading}
+            // />
+            <Movies loggedIn={loggedIn} isLoading={isLoading} />
           }
         />
         <Route
           path='/saved-movies'
           element={
-            <ProtectedRouteElement
-              element={SavedMovies}
+            // <ProtectedRouteElement
+            //   element={SavedMovies}
+            //   loggedIn={loggedIn}
+            //   isLoading={isLoading}
+            //   setIsLoading={setIsLoading}
+            // />
+            <SavedMovies
               loggedIn={loggedIn}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
@@ -45,8 +51,14 @@ const App = () => {
         <Route
           path='/profile'
           element={
-            <ProtectedRouteElement
-              element={Profile}
+            // <ProtectedRouteElement
+            //   element={Profile}
+            //   onSubmit={() => console.log('click')}
+            //   setLoggedIn={setLoggedIn}
+            //   isLoading={isLoading}
+            //   loggedIn={loggedIn}
+            // />
+            <Profile
               onSubmit={() => console.log('click')}
               setLoggedIn={setLoggedIn}
               isLoading={isLoading}
@@ -80,15 +92,14 @@ const App = () => {
                 setValue={setValueLogin}
                 isLoading={isLoading}
                 setLoggedIn={setLoggedIn}
-                onLogin={() => setLoggedIn(true)}/>
+                onLogin={() => setLoggedIn(true)}
+              />
             )
           }
         />
         <Route
           path='*'
-          element={
-            <NotFound setIsErrorPage={setIsErrorPage} />
-          }
+          element={<NotFound setIsErrorPage={setIsErrorPage} />}
         />
       </Routes>
     </>

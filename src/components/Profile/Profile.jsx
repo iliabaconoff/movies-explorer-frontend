@@ -44,8 +44,8 @@ const Profile = ({ onSubmit, setLoggedIn, loggedIn }) => {
                   placeholder={'Виталий'}
                   required={true}
                   name={'name'}
-                  form={'profile'}
-                  label={'Имя'}
+                  minLength={2}
+                  maxLength={30}
                 />
               </li>
               <li className={`form__item form__item_type_profile`}>
@@ -56,13 +56,15 @@ const Profile = ({ onSubmit, setLoggedIn, loggedIn }) => {
                   placeholder={'pochta@yandex.ru'}
                   required={true}
                   name={'email'}
-                  form={'profile'}
-                  label={'E-mail'}
                 />
               </li>
             </ul>
           </Form>
-          <button className='profile__button-exit' onClick={onSignOut}>
+          <button
+            type='button'
+            className='profile__button-exit'
+            onClick={onSignOut}
+          >
             Выйти из аккаунта
           </button>
         </section>

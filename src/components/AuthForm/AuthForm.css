@@ -8,8 +8,8 @@
 }
 
 .form__response-error {
-  min-height: 13px;
-  margin: 90px 0 20px;
+  min-height: 14px;
+  margin: 93px 0 20px;
   color: #ee3465;
   font-weight: 400;
   font-size: 11px;
@@ -37,9 +37,13 @@
 }
 
 .form__submit-button_disabled {
-  opacity: 0.5;
+  opacity: 1;
   cursor: not-allowed;
+  background-color: #F8F8F8;
+  color: #C2C2C2;
 }
+
+
 
 .form__link-caption {
   margin: 0;
@@ -68,6 +72,10 @@
 
   .form__link:hover {
     opacity: 0.7;
+  }
+
+  .form__submit-button_disabled:hover {
+    opacity: 1;
   }
 }
 

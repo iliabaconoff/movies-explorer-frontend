@@ -30,7 +30,6 @@
 }
 
 .form__label_type_search {
-
   width: 100%;
 }
 
@@ -50,6 +49,10 @@
   border-radius: 10px;
   transition: bacground-color 0.6s;
   cursor: pointer;
+}
+
+.form__input_type_short:hover {
+  opacity: 0.8;
 }
 
 .form__label_type_short {

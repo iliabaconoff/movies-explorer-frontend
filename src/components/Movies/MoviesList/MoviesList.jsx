@@ -18,7 +18,11 @@ const MoviesList = ({ saved, moviesList, onClickMore }) => {
       </ul>
       <div className='movies__wrapper'>
         {!saved && (
-          <button className='movies__button-more' onClick={onClickMore}>
+          <button
+            type='button'
+            className='movies__button-more'
+            onClick={onClickMore}
+          >
             Ещё
           </button>
         )}

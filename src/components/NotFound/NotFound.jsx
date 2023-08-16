@@ -14,15 +14,13 @@ const NotFound = ({ setIsErrorPage }) => {
 
   return (
     <Main className='error'>
-      <h1 className='error__title'>404</h1>
-      <p className='error__subtitle'>Страница не найдена</p>
-      <Link
-        className='error__link'
-        to='/' //исправить на путь назад
-        onClick={handleClickBack}
-      >
-        Назад
-      </Link>
+      <section>
+        <h1 className='error__title'>404</h1>
+        <p className='error__subtitle'>Страница не найдена</p>
+        <Link className='error__link' to={-1} onClick={handleClickBack}>
+          Назад
+        </Link>
+      </section>
     </Main>
   );
 };

@@ -6,6 +6,7 @@ import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
 
 const SavedMovies = ({ loggedIn }) => {
+  console.log(loggedIn);
   return (
     <>
       <Header loggedIn={loggedIn} />

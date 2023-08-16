@@ -5,7 +5,7 @@
   width: 100%;
   height: 100dvh;
   text-align: center;
-  padding: 329px var(--indent-mobile) 30px;
+  padding: 329px 14px 30px;
 }
 
 .error__title {
@@ -24,14 +24,14 @@
 .error__link {
   font-size: 12px;
   line-height: 15px;
-  color: var(--color-second-two);
+  color: #4285F4;
   text-decoration: none;
 }
 
 
 @media (min-width: 768px) {
   .error {
-    padding: 407px var(--indent-tablet) 60px;
+    padding: 407px 30px 60px;
   }
 
   .error__title {
@@ -53,6 +53,6 @@
 
 @media (min-width: 1280px) {
   .error {
-    padding: 246px var(--indent-desktop) 60px;
+    padding: 246px 70px 60px;
   }
 }

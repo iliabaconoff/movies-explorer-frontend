@@ -3,12 +3,17 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 0 auto;
+  margin: 0;
   padding: 56px 30px 30px;
   align-items: center;
 }
 
+.auth__section {
+  width: 100%;
+}
+
 .auth__logo {
+  display: block;
   cursor: pointer;
   width: 38px;
   height: 38px;
@@ -36,6 +41,9 @@
     padding: 232px 0 30px;
     min-height: 706px;
     align-items: start;
+    margin: 0 auto;
+    
+  width: 100%;
   }
 
   .auth__logo {
