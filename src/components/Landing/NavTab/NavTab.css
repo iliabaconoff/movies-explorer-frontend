@@ -1,0 +1,26 @@
+.promo__list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  list-style: none;
+  padding: 25px 0;
+  margin: 0;
+  gap: 24px;
+  background-color: #272727;
+}
+
+.promo__link {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .promo__list {
+    padding: 24px 0;
+    font-size: 13px;
+    line-height: 18px;
+    gap: 40px;
+  }
+}

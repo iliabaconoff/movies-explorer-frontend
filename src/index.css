@@ -1,0 +1,30 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
+
+.root {
+  background-color: #202020;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.page {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1280px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+*:focus-visible,
+button:focus-visible,
+[type="button"]:focus-visible,
+[type="submit"]:focus-visible {
+  outline-color: #4285F4;
+  outline-style: solid;
+  outline-width: 2px;
+}

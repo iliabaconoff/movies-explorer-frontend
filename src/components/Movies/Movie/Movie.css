@@ -1,0 +1,113 @@
+.movies__item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background: #202020;
+  width: 100%;
+}
+
+.movies__info {
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  padding-bottom: 10px;
+}
+
+.movies__heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0 25px;
+  position: relative;
+}
+
+.movies__heading::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #424242;
+  bottom: 0;
+  left: 0;
+}
+
+.movies__title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 5px 0 0;
+}
+
+.movies__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.786;
+  object-fit: cover;box-sizing: border-box;
+}
+
+.movies__duration {
+  font-size: 10px;
+  line-height: 12px;
+  color: #8b8b8b;
+  margin: 6px 0 0;
+}
+
+.movies__favorite-button {
+  background-image: url('../../../images/saved-inactive.svg');
+  background-repeat: no-repeat;
+  background-position: center 65%;
+  background-size: 12px 14px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #313131;
+  border: none;
+  cursor: pointer;
+}
+
+.movies__delete-button {
+  background-image: url('../../../images/delete-button.svg');
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #313131;
+  border: none;
+  cursor: pointer;
+}
+
+.movies__favorite-button_active {
+  background-image: url('../../../images/saved-active.svg');
+}
+
+@media (min-width: 768px) {
+  .movies__item {
+    width: 339px;
+    height: 279px;
+  }
+
+  .movies__title {
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 4px;
+  }
+
+  .movies__duration {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .movies__delete-button:hover,
+  .movies__favorite-button_active:hover,
+  .movies__favorite-button:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (min-width: 1280px) {
+  .movies__item {
+    width: 270px;
+    height: 240px;
+  }
+}

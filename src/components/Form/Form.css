@@ -1,0 +1,109 @@
+.form {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form__label {
+  display: block;
+  position: relative;
+}
+
+.form__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.form__item {
+  position: relative;
+}
+
+.form__button-save {
+  cursor: pointer;
+  transition: 0.5s opacity ease-out;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  background: #4285F4;
+  padding: 8px 10px;
+  border-radius: 48px;
+  color: #fff;
+  margin-top: auto;
+}
+
+.form__input {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  appearance: none;
+}
+
+.form__button-save:disabled {
+  cursor: default;
+  opacity: var(--disabled);
+}
+
+.form__error {
+  display: flex;
+  font-size: 10px;
+  line-height: 10px;
+  color: #EE3465;
+  transition: 0.5s;
+  min-height: 20px;
+  padding: 0;
+  align-items: flex-end;
+}
+
+.form__error_visible {
+  opacity: 1;
+}
+
+/* Profile */
+.form_type_profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: auto;
+}
+
+.form__list_type_profile {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-bottom: auto;
+}
+
+.form__button-save_type_profile {
+  background-color: transparent;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+
+@media (min-width: 768px) {
+  .form__button-save:not([disabled]):hover {
+    opacity: 0.8;
+  }
+
+  /* Profile */
+  .form_type_profile {
+    min-height: 288px;
+    flex: 0;
+  }
+
+  .form__button-save_type_profile {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  /* Profile */
+  .form_type_profile {
+    min-height: 298px;
+  }
+}
