@@ -1,17 +1,15 @@
-// import React, { useState } from 'react';
 import './AuthForm.css';
 import { Link } from 'react-router-dom';
 import useFormValid from '../hooks/useFormValid';
 import ErrorLabel from './ErrorLabel/ErrorLabel';
 
 const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
-  const { values, errors, isValid, handleChange, resetForm } = useFormValid();
-  // const [serverResError, setServerResError] = useState(false);
+  const { values, errors, isValid, handleChange, isFormActivated } =
+    useFormValid();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    resetForm();
-    isRegForm ? onRegister() : onLogin();
+    isRegForm ? onRegister(values) : onLogin(values);
   };
 
   return (
@@ -31,6 +29,7 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
           maxLength={30}
           placeholder='Виталий'
           type='text'
+          disabled={!isFormActivated}
         />
       )}
       <ErrorLabel
@@ -41,6 +40,7 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
         errors={errors}
         placeholder='pochta@yandex.ru|'
         type='email'
+        disabled={!isFormActivated}
       />
       <ErrorLabel
         title='Пароль'
@@ -51,13 +51,20 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
         minLength={6}
         placeholder='••••••••••••••'
         type='password'
+        disabled={!isFormActivated}
       />
-      <p className={`form__response-error ${!isRegForm && 'form__response-error_type_login'}`}>
+      <p
+        className={`form__response-error ${
+          !isRegForm && 'form__response-error_type_login'
+        }`}
+      >
         {/* {serverResError && 'Пример текста ошибки с сервера.'} */}
       </p>
       <button
         type='submit'
-        className={`form__submit-button ${!isValid && 'form__submit-button_disabled'}`}
+        className={`form__submit-button ${
+          !isValid && 'form__submit-button_disabled'
+        }`}
         // disabled={!isValid}
       >
         {isRegForm ? 'Зарегистрироваться' : 'Войти'}
@@ -66,20 +73,14 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
         {isRegForm ? (
           <>
             Уже зарегистрированы?
-            <Link
-              to='/signin'
-              className='form__link'
-            >
+            <Link to='/signin' className='form__link'>
               Войти
             </Link>
           </>
         ) : (
           <>
             Еще не зарегистрированы?
-            <Link
-              to='/signup'
-              className='form__link'
-            >
+            <Link to='/signup' className='form__link'>
               Регистрация
             </Link>
           </>

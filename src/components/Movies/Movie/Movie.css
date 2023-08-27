@@ -4,6 +4,7 @@
   cursor: pointer;
   background: #202020;
   width: 100%;
+  min-height: 240px;
 }
 
 .movies__info {
@@ -11,23 +12,14 @@
   flex-direction: column;
   order: 1;
   padding-bottom: 10px;
+  height: 100%;
 }
 
 .movies__heading {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0 25px;
-  position: relative;
-}
-
-.movies__heading::before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background-color: #424242;
-  bottom: 0;
-  left: 0;
+  padding: 10px 0 0;
+  margin-bottom: auto;
 }
 
 .movies__title {
@@ -45,17 +37,30 @@
 }
 
 .movies__duration {
+  position: relative;
   font-size: 10px;
   line-height: 12px;
   color: #8b8b8b;
-  margin: 6px 0 0;
+  padding: 6px 0 0;
+  margin-top: auto;
+}
+
+
+.movies__duration::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #424242;
+  top: 0;
+  left: 0;
 }
 
 .movies__favorite-button {
   background-image: url('../../../images/saved-inactive.svg');
   background-repeat: no-repeat;
-  background-position: center 65%;
-  background-size: 12px 14px;
+  background-position: center;
+  background-size: 10px 9px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -68,7 +73,7 @@
   background-image: url('../../../images/delete-button.svg');
   background-size: 13px;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: center;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -102,6 +107,10 @@
   .movies__favorite-button_active:hover,
   .movies__favorite-button:hover {
     opacity: 0.8;
+  }
+
+  .movies__image:hover {
+    filter: drop-shadow(0 0 3px #4285F4);
   }
 }
 

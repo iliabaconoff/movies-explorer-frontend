@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.main__status {
+  text-align: center;
+}
+
 .main__wrapper {
   padding: 70px 10px;
 }

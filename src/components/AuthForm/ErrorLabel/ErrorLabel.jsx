@@ -11,6 +11,7 @@ const Label = ({
   maxLength,
   placeholder,
   type,
+  disabled,
 }) => {
   return (
     <label className='error-label'>

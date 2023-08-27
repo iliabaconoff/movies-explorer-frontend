@@ -5,13 +5,6 @@
 //   buttonTextLoading: 'Удаление...',
 // };
 
-// const popupInfo = {
-//   name: 'info',
-//   title: 'Вы успешно зарегистрировались!',
-//   // iconPositive: iconPositive,
-//   // iconNegative: iconNegative,
-// };
-
 const formRegister = {
   validate: true,
   name: 'register',
@@ -130,7 +123,6 @@ const formSearch = {
 
 export {
   // popupConfirmation,
-  // popupInfo,
   formRegister,
   formLogin,
   formSearch,

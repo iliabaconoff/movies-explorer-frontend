@@ -74,7 +74,7 @@
   left: 2px;
   top: 2px;
   border-radius: 50%;
-  transition: transform 0.7s;
+  transition: transform 0.3s;
 }
 
 .form__input_type_short:checked {

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SectionTite from '../SectionTitle/SectionTitle';
 import './AboutMe.css';
 import me from '../../../images/aboutme.png';
+import { URL_GITHUB } from '../../../utils/constants';
 
 const AboutMe = () => {
   return (
@@ -18,11 +19,7 @@ const AboutMe = () => {
             После того, как прошёл курс по веб-разработке, начал заниматься
             фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <Link
-            className='about-me__link'
-            to='https://github.com/iliabaconoff'
-            target='_blank'
-          >
+          <Link className='about-me__link' to={URL_GITHUB} target='_blank'>
             Github
           </Link>
         </div>

@@ -1,6 +1,7 @@
 import Navigation from '../../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import './Portfolio.css';
+import { URL_ADAPTIVE, URL_APP, URL_STATIC } from '../../../utils/constants';
 
 const Portfolio = () => {
   return (
@@ -9,29 +10,17 @@ const Portfolio = () => {
       <Navigation className='portfolio__nav'>
         <ul className='portfolio__list'>
           <li className='portfolio__item'>
-            <Link
-              className='portfolio__link'
-              to='https://iliabaconoff.github.io/how_to_study/'
-              target='_blank'
-            >
+            <Link className='portfolio__link' to={URL_STATIC} target='_blank'>
               Статичный сайт
             </Link>
           </li>
           <li className='portfolio__item'>
-            <Link
-              className='portfolio__link'
-              to='https://iliabaconoff.github.io/russian-travel/'
-              target='_blank'
-            >
+            <Link className='portfolio__link' to={URL_ADAPTIVE} target='_blank'>
               Адаптивный сайт
             </Link>
           </li>
           <li className='portfolio__item'>
-            <Link
-              className='portfolio__link'
-              to='https://github.com/iliabaconoff/react-mesto-api-full-gha'
-              target='_blank'
-            >
+            <Link className='portfolio__link' to={URL_APP} target='_blank'>
               Одностраничное приложение
             </Link>
           </li>

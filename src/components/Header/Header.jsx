@@ -32,7 +32,6 @@ const Header = ({ loggedIn }) => {
   function handleCloseClick() {
     setMenuActive(false);
   }
-  console.log(loggedIn);
 
   return (
     <header className={classNameHeader()}>

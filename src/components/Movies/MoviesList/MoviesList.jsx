@@ -1,23 +1,31 @@
 import './MoviesList.css';
-import Movies from '../Movie/Movie';
+import Movie from '../Movie/Movie';
 
-const MoviesList = ({ saved, moviesList, onClickMore }) => {
+const MoviesList = ({
+  moviesList,
+  onClickMore,
+  onMovieLike,
+  savedMovies,
+  isSavedMoviesPage,
+  isShowMoreButton,
+  onCardDelete,
+}) => {
   return (
     <section className='movies'>
       <ul className='movies__card-list'>
         {moviesList.map((movie) => (
-          <Movies
+          <Movie
             movie={movie}
-            onCardClick={() => {}}
-            key={movie.movieId}
-            onCardLike={() => {}}
-            onCardDelete={() => {}}
-            saved={saved}
+            key={movie.id ?? movie._id}
+            onMovieLike={onMovieLike}
+            onCardDelete={onCardDelete}
+            savedMovies={savedMovies}
+            isSavedMoviesPage={isSavedMoviesPage}
           />
         ))}
       </ul>
       <div className='movies__wrapper'>
-        {!saved && (
+        {isShowMoreButton && (
           <button
             type='button'
             className='movies__button-more'

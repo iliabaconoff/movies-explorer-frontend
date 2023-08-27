@@ -6,11 +6,12 @@ const Input = ({
   name,
   type,
   placeholder,
-  checked,
+  isChecked,
   required,
   minLength,
   maxLength,
   label,
+  disabled,
 }) => {
   const classInput = `form__input form__input_type_${name}`;
 
@@ -22,9 +23,10 @@ const Input = ({
           className={classInput}
           type={type}
           name={name}
-          defaultChecked={checked}
+          checked={isChecked}
           required={required}
           onChange={handleChange}
+          disabled={disabled}
         />
       );
       break;
@@ -39,6 +41,7 @@ const Input = ({
           value={value ?? ''}
           onChange={handleChange}
           autoComplete='on'
+          disabled={disabled}
         />
       );
       break;
@@ -55,6 +58,7 @@ const Input = ({
           value={value ?? ''}
           onChange={handleChange}
           autoComplete='on'
+          disabled={disabled}
         />
       );
       break;
