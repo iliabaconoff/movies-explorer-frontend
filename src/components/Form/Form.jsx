@@ -12,7 +12,6 @@ export default function Form({
   buttonText,
   isFormActivated,
   isSendRequest,
-  noValidate,
 }) {
   const { pathname } = useLocation();
   return (

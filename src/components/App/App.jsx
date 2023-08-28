@@ -197,17 +197,23 @@ const App = () => {
       });
   }
 
-  function getAllMovies() {
-    getAllMoviesApi()
-      .then((res) => {
-        setAllMovies(res);
-      })
-      .catch((err) => console.log(err));
-  }
+  const getAllMovies = async () => {
+    try {
+      const movies = await getAllMoviesApi();
+      setAllMovies(movies);
+      return movies;
+    } catch (e) {
+      handleInfoTooltipNegative({ error: MESSAGE_TEXT.serverError });
+    }
+  };
 
-  useEffect(() => {
-    getAllMovies();
-  }, []);
+  function onSignOut() {
+    setCurrentUser({});
+    setAllMovies([]);
+    setSavedMovies([]);
+    localStorage.clear();
+    navigate(MAIN_PATH, { replace: true });
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -251,6 +257,7 @@ const App = () => {
               onSubmit={handleUpdateUser}
               loggedIn={currentUser.isLoggedIn}
               setCurrentUser={setCurrentUser}
+              onSignOut={onSignOut}
             />
           }
         />

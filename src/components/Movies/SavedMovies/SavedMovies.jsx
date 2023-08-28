@@ -34,19 +34,16 @@ const SavedMovies = ({
         />
         {searchStatus.isLoading ? (
           <Preloader />
+        ) : searchStatus.statusMessage ? (
+          <p className='main__status'>{searchStatus.statusMessage}</p>
         ) : (
-          <>
-            {searchStatus.statusMessage && (
-              <p className='main__status'>{searchStatus.statusMessage}</p>
-            )}
-            <MoviesList
-              saved={true}
-              moviesList={filteredMovies}
-              savedMovies={savedMovies}
-              isSavedMoviesPage={isSavedMoviesPage}
-              onCardDelete={onCardDelete}
-            />
-          </>
+          <MoviesList
+            saved={true}
+            moviesList={filteredMovies}
+            savedMovies={savedMovies}
+            isSavedMoviesPage={isSavedMoviesPage}
+            onCardDelete={onCardDelete}
+          />
         )}
       </Main>
       <Footer />

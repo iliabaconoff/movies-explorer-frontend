@@ -2,19 +2,16 @@ import { useState, useCallback, useEffect } from 'react';
 import {
   MESSAGE_TEXT,
   PROFILE_PATH,
+  REGISTER_PATH,
   REGX_EMAIL,
   REGX_NAME,
 } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
 
-const useFormValid = (
-  initialValues = {},
-  initialErrors = {},
-  initialValid = false
-) => {
-  const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState(initialErrors);
-  const [isValid, setValid] = useState(initialValid);
+const useFormValid = () => {
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setValid] = useState({});
   const [isFormValid, setFormValid] = useState(false);
   const [isFormActivated, setFormActivated] = useState(true);
 
@@ -27,13 +24,17 @@ const useFormValid = (
   useEffect(() => {
     if (pathname === PROFILE_PATH) {
       setFormActivated(false);
+      setValid({ name: false, email: false });
+    } else if (pathname === REGISTER_PATH) {
+      setValid({ name: false, email: false, password: false });
+    } else {
+      setValid({ email: false, password: false });
     }
   }, [pathname]);
 
   const handleChange = (evt) => {
     const { name, value, type } = evt.target;
     const { valid } = evt.target.validity;
-    console.log(values);
 
     if (name === 'email' && !REGX_EMAIL.test(value)) {
       setValid((isValid) => ({ ...isValid, [name]: false }));
@@ -51,7 +52,7 @@ const useFormValid = (
   };
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
+    (newValues = {}, newErrors = {}, newIsValid = {}) => {
       setValues(newValues);
       setErrors(newErrors);
       setValid(newIsValid);

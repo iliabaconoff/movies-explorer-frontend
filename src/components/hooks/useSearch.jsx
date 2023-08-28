@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { filterMovies } from '../../utils/filter';
 import {
   KEYWORD_LOCALSTORAGE_SEARCH,
@@ -7,7 +6,7 @@ import {
   TIMEOUT,
 } from '../../utils/constants';
 
-const useSearch = ({ movies, isSavedMoviesPage }) => {
+const useSearch = ({ movies, isSavedMoviesPage, getAllMovies }) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const { beforeSearching, noMovies } = MESSAGE_TEXT;
   const { download, preloader } = TIMEOUT;
@@ -20,12 +19,9 @@ const useSearch = ({ movies, isSavedMoviesPage }) => {
 
   const [searchStatus, setSearchStatus] = useState({
     statusMessage: beforeSearching,
-    isLoading: false,
+    isLoading: true,
     isFirstSearch: false,
   });
-
-  const { pathname } = useLocation();
-
   useEffect(() => {
     if (isSavedMoviesPage && !searchStatus.isLoading) {
       setFilteredMovies(filterMovies(savedSearch, movies));
@@ -41,7 +37,6 @@ const useSearch = ({ movies, isSavedMoviesPage }) => {
     } else {
       resetStatus();
     }
-    
   }, [filteredMovies]);
 
   useEffect(() => {
@@ -102,7 +97,25 @@ const useSearch = ({ movies, isSavedMoviesPage }) => {
     });
   };
 
-  const handleSubmitSearch = (value) => {
+  const handleSubmitSearch = async (value) => {
+    let data;
+    if (searchStatus.isFirstSearch) {
+      const allMovies = await getAllMovies();
+      console.log(allMovies);
+      data = filterMovies(value, allMovies);
+    } else {
+      data = filterMovies(value, movies);
+    }
+
+    if (value.search.length === 0) {
+      return setSearchStatus({
+        ...searchStatus,
+        statusMessage: MESSAGE_TEXT.emptyString,
+        isLoading: false,
+        isFirstSearch: false,
+      });
+    }
+
     if (isSavedMoviesPage) {
       setSavedSearch({
         search: value.search,
@@ -112,7 +125,7 @@ const useSearch = ({ movies, isSavedMoviesPage }) => {
 
     resetStatus();
     setLoader(true);
-    const data = filterMovies(value, movies);
+
     setTimeout(
       () => {
         if (data.length === 0) {

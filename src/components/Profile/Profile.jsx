@@ -2,14 +2,12 @@ import { useContext, useEffect } from 'react';
 import './Profile.css';
 import Form from '../Form/Form';
 import Input from '../Form/Input/Input';
-import { useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import useFormValid from '../hooks/useFormValid';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { MAIN_PATH } from '../../utils/constants';
 
-const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
+const Profile = ({ onSubmit, loggedIn, isSendRequest, onSignOut }) => {
   const {
     values,
     handleChange,
@@ -19,9 +17,9 @@ const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
     isFormActivated,
     isValid,
     isFormValid,
+    errors,
   } = useFormValid();
   const currentUser = useContext(CurrentUserContext);
-  const navigate = useNavigate();
 
   function handleInputChange(evt) {
     handleChange(evt);
@@ -37,10 +35,8 @@ const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
     setFormActivated(true);
   };
 
-  const onSignOut = () => {
-    setCurrentUser({});
-    localStorage.clear();
-    navigate(MAIN_PATH, { replace: true });
+  const handleSignOut = () => {
+    onSignOut();
   };
 
   useEffect(() => {
@@ -53,6 +49,7 @@ const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
       setValid((isValid) => ({ ...isValid, name: true, email: true }));
     }
   }, [currentUser]);
+
   return (
     <>
       <Header loggedIn={loggedIn} />
@@ -86,6 +83,8 @@ const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
                   maxLength={30}
                   disabled={!isFormActivated}
                   label={'Имя'}
+                  form={'profile'}
+                  errors={errors}
                 />
               </li>
               <li className={`form__item form__item_type_profile`}>
@@ -98,6 +97,8 @@ const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
                   name={'email'}
                   disabled={!isFormActivated}
                   label={'E-mail'}
+                  form={'profile'}
+                  errors={errors}
                 />
               </li>
             </ul>
@@ -115,7 +116,7 @@ const Profile = ({ onSubmit, setCurrentUser, loggedIn, isSendRequest }) => {
               <li className='profale__item'>
                 <button
                   className='profile__button profile__button_exit'
-                  onClick={onSignOut}
+                  onClick={handleSignOut}
                 >
                   Выйти из аккаунта
                 </button>

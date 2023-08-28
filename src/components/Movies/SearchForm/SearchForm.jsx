@@ -2,6 +2,7 @@ import Form from '../../Form/Form';
 import Input from '../../Form/Input/Input';
 import './SearchForm.css';
 import { DEVICE_SETTING } from '../../../utils/constants';
+import { useEffect } from 'react';
 
 const SearchForm = ({
   isSavedMoviesPage,
@@ -19,7 +20,7 @@ const SearchForm = ({
   };
 
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    evt.preventDefault();    
     submit(valueSerch);
   };
 
@@ -47,7 +48,7 @@ const SearchForm = ({
         onSubmit={handleSubmit}
         isFormActivated={isFormActivated}
         searchStatus={searchStatus}
-        isFormValid={valueSerch.search.length !== 0}
+        isFormValid={true}
       >
         <Input
           value={valueSerch.search}
@@ -58,7 +59,6 @@ const SearchForm = ({
           name={'search'}
           form={'search'}
           isSavedMoviesPage={isSavedMoviesPage}
-          disabled={!isFormActivated}
         />
         <Input
           handleChange={handleChangeCheckbox}
@@ -68,7 +68,6 @@ const SearchForm = ({
           form={'search'}
           isChecked={valueSerch.short}
           isSavedMoviesPage={isSavedMoviesPage}
-          disabled={!isFormActivated}
         />
       </Form>
     </section>

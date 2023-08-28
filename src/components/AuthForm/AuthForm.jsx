@@ -4,7 +4,7 @@ import useFormValid from '../hooks/useFormValid';
 import ErrorLabel from './ErrorLabel/ErrorLabel';
 
 const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
-  const { values, errors, isValid, handleChange, isFormActivated } =
+  const { values, errors, handleChange, isFormValid, isFormActivated } =
     useFormValid();
 
   const handleSubmit = (evt) => {
@@ -17,6 +17,7 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
       name={isRegForm ? 'registration' : 'login'}
       className='form form_type_auth'
       onSubmit={handleSubmit}
+      noValidate
     >
       {isRegForm && (
         <ErrorLabel
@@ -57,15 +58,13 @@ const AuthForm = ({ isRegForm, onLogin, onRegister }) => {
         className={`form__response-error ${
           !isRegForm && 'form__response-error_type_login'
         }`}
-      >
-        {/* {serverResError && 'Пример текста ошибки с сервера.'} */}
-      </p>
+      ></p>
       <button
         type='submit'
         className={`form__submit-button ${
-          !isValid && 'form__submit-button_disabled'
+          !isFormValid ? 'form__submit-button_disabled' : ''
         }`}
-        // disabled={!isValid}
+        disabled={!isFormValid}
       >
         {isRegForm ? 'Зарегистрироваться' : 'Войти'}
       </button>

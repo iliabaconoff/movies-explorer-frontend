@@ -1,4 +1,6 @@
+import { useLocation } from 'react-router-dom';
 import './Input.css';
+import { MOVIES_PATH, SAVED_MOVIES_PATH } from '../../../utils/constants';
 
 const Input = ({
   value,
@@ -12,8 +14,11 @@ const Input = ({
   maxLength,
   label,
   disabled,
+  errors,
+  form
 }) => {
   const classInput = `form__input form__input_type_${name}`;
+  const {pathname} = useLocation();
 
   let inputType;
   switch (type) {
@@ -69,6 +74,13 @@ const Input = ({
       {(type === 'checkbox' || type !== 'search') &&
         (label ? label : placeholder)}
       {inputType}
+      {!(
+        pathname === MOVIES_PATH || pathname === SAVED_MOVIES_PATH
+      ) && (
+        <span className={`form__error form__error_${form} ${name}-error`}>
+          {errors[name]}
+        </span>
+      )}
     </label>
   );
 };

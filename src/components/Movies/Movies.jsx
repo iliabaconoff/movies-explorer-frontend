@@ -23,11 +23,17 @@ const Movies = ({
   const [maxMovies, setMaxMovies] = useState(DEVICE_SETTING.desktop.maxMovies);
   const [moreMovies, setMoreMovies] = useState(0);
   const [isShowMoreButton, setShowMoreButton] = useState(false);
-  const { filteredMovies, savedSearch, searchStatus, handleSubmitSearch } =
-    useSearch({
-      movies: allMovies,
-      isSavedMoviesPage: false,
-    });
+  const {
+    filteredMovies,
+    savedSearch,
+    searchStatus,
+    handleSubmitSearch,
+    setSearchStatus,
+  } = useSearch({
+    movies: allMovies,
+    isSavedMoviesPage: false,
+    getAllMovies: getAllMovies,
+  });
   const [valueSerch, setValueSerch] = useState({
     search: savedSearch.search ?? '',
     short: savedMovies.short ?? false,
@@ -80,24 +86,22 @@ const Movies = ({
           savedSearch={savedSearch}
           getAllMovies={getAllMovies}
           device={device}
+          setSearchStatus={setSearchStatus}
         />
         {searchStatus.isLoading ? (
           <Preloader />
+        ) : searchStatus.statusMessage ? (
+          <p className='main__status'>{searchStatus.statusMessage}</p>
         ) : (
-          <>
-            {searchStatus.statusMessage && (
-              <p className='main__status'>{searchStatus.statusMessage}</p>
-            )}
-            <MoviesList
-              moviesList={filteredMovies.slice(0, maxMovies)}
-              onClickMore={handleClickMore}
-              onMovieLike={onMovieLike}
-              searchStatus={searchStatus}
-              isShowMoreButton={isShowMoreButton}
-              isSavedMoviesPage={isSavedMoviesPage}
-              savedMovies={savedMovies}
-            />
-          </>
+          <MoviesList
+            moviesList={filteredMovies.slice(0, maxMovies)}
+            onClickMore={handleClickMore}
+            onMovieLike={onMovieLike}
+            searchStatus={searchStatus}
+            isShowMoreButton={isShowMoreButton}
+            isSavedMoviesPage={isSavedMoviesPage}
+            savedMovies={savedMovies}
+          />
         )}
       </Main>
       <Footer />
