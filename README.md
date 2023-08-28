@@ -6,4 +6,4 @@
 * Ссылка на проект: https://moviefinder.nomoredomains.xyz
 * Ссылка на API: https://api.moviefinder.nomoredomains.xyz
 
-* Ссылка на PR: https://github.com/iliabaconoff/movies-explorer-frontend/pull1
+* Ссылка на PR: https://github.com/iliabaconoff/movies-explorer-frontend/pull/2
