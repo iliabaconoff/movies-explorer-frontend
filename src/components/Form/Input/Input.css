@@ -37,6 +37,14 @@
   left: 0;
 }
 
+.form__input_type_search {
+  color: #fff;
+}
+
+.form__error_profile {
+  grid-column: span 2;
+}
+
 .form_type_profile .form__input::placeholder {
   color: #fff;
   font-size: var(--text-mobile);

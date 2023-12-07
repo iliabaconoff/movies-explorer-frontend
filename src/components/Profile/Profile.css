@@ -19,17 +19,33 @@
   margin-bottom: 80px;
 }
 
-.profile__button-exit {
+.profile__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: auto auto 0;
   text-align: center;
-  color: #ee3465;
-  background-color: transparent;
+}
+
+.profile__button {
   border: none;
   padding: 0;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 15px;
+  background-color: transparent;
   cursor: pointer;
-  margin: 16px auto 40px;
+  line-height: 15px;
+  font-size: 12px;
+}
+
+.profile__button_edit {
+  color: #fff;
+}
+
+.profile__button_exit {
+  text-align: center;
+  color: #ee3465;
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {
@@ -42,7 +58,8 @@
     margin-bottom: 96px;
   }
 
-  .profile__button-exit {
+  .profile__button_exit,
+  .profile__button_edit {
     font-size: 13px;
     line-height: 16px;
   }
@@ -53,11 +70,11 @@
     padding: 74px 70px 0;
   }
 
-  .profile__title {
-    margin-bottom: 123px;
+  .profile__list {
+    margin-top: 11px;
   }
 
-  .profile__button-exit {
-    margin-bottom: 70px;
+  .profile__button {
+    font-size: 13px;
   }
 }

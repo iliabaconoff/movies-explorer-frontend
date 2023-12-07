@@ -11,6 +11,7 @@ const Label = ({
   maxLength,
   placeholder,
   type,
+  disabled,
 }) => {
   return (
     <label className='error-label'>
@@ -26,6 +27,7 @@ const Label = ({
         autoComplete='on'
         onChange={handleChange}
         required
+        disabled={disabled}
       />
       <span className='error-label__span-error'>{errors[`${name}`]}</span>
     </label>

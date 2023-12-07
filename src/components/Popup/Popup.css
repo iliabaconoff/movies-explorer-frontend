@@ -1,0 +1,91 @@
+.popup {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(32, 32, 32, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__heading {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 22px;
+  color: #fff;
+  margin: 0 0 75px;
+}
+
+.popup__heading_type_confirmation {
+  margin-bottom: 38px;
+}
+
+.popup__container {
+  position: relative;
+  max-width: 282px;
+  background-color: #272727;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 25px 22px;
+  text-align: center;
+  filter: drop-shadow(0 0 3px #4285F4);
+}
+
+.popup__container_type_info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 50px 18px;
+}
+
+.popup__button-close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -36px;
+  right: 0;
+  border-radius: 50%;
+  background: #272727 url('../../images/delete-button.svg') center / cover no-repeat;
+  border: none;
+}
+
+@media (min-width: 880px) {
+  .popup__button-close {
+    width: 32px;
+    height: 32px;
+    top: -40px;
+    right: -40px;
+  }
+
+  .popup__container {
+    max-width: 430px;
+    padding: 34px 36px 37px;
+  }
+
+  .popup__heading {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 48px;
+  }
+  .popup__container {
+    min-width: 350px;
+  }
+    
+  .popup__container_type_info {
+    gap: 32px;
+    align-items: center;
+    padding: 60px 36px;
+  }
+}

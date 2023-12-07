@@ -1,38 +1,73 @@
 import Form from '../../Form/Form';
 import Input from '../../Form/Input/Input';
-import { useState } from 'react';
 import './SearchForm.css';
+import { DEVICE_SETTING } from '../../../utils/constants';
+import { useEffect } from 'react';
 
-const SearchForm = () => {
-  const [valueSerch, setValueSerch] = useState({});
+const SearchForm = ({
+  isSavedMoviesPage,
+  onSubmitSearch,
+  valueSerch,
+  setValueSerch,
+  device,
+  setMaxMovies,
+  searchStatus,
+  isFormActivated,
+}) => {
+  const submit = (values) => {
+    onSubmitSearch(values);
+    !isSavedMoviesPage && setMaxMovies(DEVICE_SETTING[device].maxMovies);
+  };
 
-  function handleChange(evt) {
-    setValueSerch({ ...valueSerch, [evt.target.name]: evt.target.value });
-  }
+  const handleSubmit = (evt) => {
+    evt.preventDefault();    
+    submit(valueSerch);
+  };
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-  }
+  const handleChangeCheckbox = (evt) => {
+    setValueSerch((valueSerch) => {
+      return { ...valueSerch, [evt.target.name]: evt.target.checked };
+    });
+
+    if (!isSavedMoviesPage && searchStatus.isFirstSearch) {
+      return;
+    }
+    submit({ ...valueSerch, [evt.target.name]: evt.target.checked });
+  };
+
+  const handleChange = (evt) => {
+    setValueSerch((valueSerch) => {
+      return { ...valueSerch, [evt.target.name]: evt.target.value };
+    });
+  };
 
   return (
     <section>
-      <Form name={'search'} onSubmit={handleSubmit}>
+      <Form
+        name={'search'}
+        onSubmit={handleSubmit}
+        isFormActivated={isFormActivated}
+        searchStatus={searchStatus}
+        isFormValid={true}
+      >
         <Input
-          value={valueSerch.name}
+          value={valueSerch.search}
           handleChange={handleChange}
           type={'search'}
           placeholder={'Фильм'}
           required
           name={'search'}
           form={'search'}
+          isSavedMoviesPage={isSavedMoviesPage}
         />
         <Input
-          value={valueSerch.name}
-          handleChange={handleChange}
+          handleChange={handleChangeCheckbox}
           type={'checkbox'}
           label={'Короткометражки'}
           name={'short'}
           form={'search'}
+          isChecked={valueSerch.short}
+          isSavedMoviesPage={isSavedMoviesPage}
         />
       </Form>
     </section>

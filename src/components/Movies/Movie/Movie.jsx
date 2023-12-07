@@ -1,9 +1,37 @@
+import { BASE_URL_MOVIE } from '../../../utils/constants';
 import './Movie.css';
-import { useLocation } from 'react-router-dom';
 
-const Movies = ({ saved, movie, onCardClick, onCardLike, onCardDelete }) => {
-  const { pathname } = useLocation();
-  function handleClick() {}
+const Movie = ({
+  saved,
+  movie,
+  onCardClick,
+  onMovieLike,
+  onCardDelete,
+  savedMovies,
+  isSavedMoviesPage,
+}) => {
+  const isLiked =
+    !isSavedMoviesPage && savedMovies.some((item) => item.movieId === movie.id);
+
+  function handleClick() {
+    window.open(movie.trailerLink, '_blank', 'noopener noreferrer');
+  }
+
+  function handleLikeMovie() {
+    onMovieLike({
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: BASE_URL_MOVIE + movie.image.url,
+      trailerLink: movie.trailerLink,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
+      thumbnail: BASE_URL_MOVIE + movie.image.formats.thumbnail.url,
+      movieId: movie.id,
+    });
+  }
 
   return (
     <li className='movies__item' tabIndex={0}>
@@ -11,25 +39,32 @@ const Movies = ({ saved, movie, onCardClick, onCardLike, onCardDelete }) => {
         <div className='movies__heading'>
           <h2 className='movies__title'>{movie.nameRU}</h2>
 
-          {pathname === '/movies' ? (
+          {!isSavedMoviesPage ? (
             <button
               type='button'
+              onClick={handleLikeMovie}
               className={
-                saved
+                isLiked
                   ? 'movies__favorite-button movies__favorite-button_active'
                   : 'movies__favorite-button'
               }
             />
           ) : (
-            <button type='button' className='movies__delete-button' />
+            <button
+              type='button'
+              className='movies__delete-button'
+              onClick={() => onCardDelete(movie)}
+            />
           )}
         </div>
 
-        <p className='movies__duration'>1ч 42м</p>
+        <p className='movies__duration'>
+          {(movie.duration / 60) | 0}ч {movie.duration % 60}м
+        </p>
       </div>
       <img
         className='movies__image'
-        src={movie.image}
+        src={isSavedMoviesPage ? movie.image : BASE_URL_MOVIE + movie.image.url}
         alt={movie.nameRU}
         onClick={handleClick}
       />
@@ -37,4 +72,4 @@ const Movies = ({ saved, movie, onCardClick, onCardLike, onCardDelete }) => {
   );
 };
 
-export default Movies;
+export default Movie;
